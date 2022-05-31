@@ -8,6 +8,8 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 
+import java.sql.SQLException;
+
 public class DefinitionsSteps {
 
     private WebDriver driver;
@@ -18,27 +20,27 @@ public class DefinitionsSteps {
 
     @Given("^open browser$")
     public void open_browser() {
-
         this.conexion = new Connection();
         this.driver = this.conexion.abrirNavegador();
-
     }
 
     @And("^diligenciar user (.*) y contrasena (.*)$")
-    public void dilgenciaLogin(String user, String pass){
+    public void diligenciarLogin(String user, String pass) throws SQLException {
         this.loginPage = new LoginPage(driver);
         this.loginPage.diligenciarLogin(user, pass);
     }
 
     @And("^llegar a la opcion agregar empleado$")
-    public void llegarAddEmployee(){
+    public void llegarAddEmployee() {
         this.pimPage = new PimPage(driver);
         this.pimPage.llegarAddEmployee();
     }
 
-    @When("^diligencie name (.*) y apellido (.*)$")
-    public void diligenciarEmployee(String name, String lastName){
+    @When("^diligenciie name (.*) y apellido (.*)$")
+    public void diligenciarEmployee(String name, String lastName) throws SQLException {
         this.pimPage = new PimPage(driver);
         this.pimPage.diligenciarEmployee(name, lastName);
+
     }
+
 }

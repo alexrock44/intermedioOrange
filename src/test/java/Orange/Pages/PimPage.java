@@ -1,5 +1,7 @@
 package Orange.Pages;
 
+import Orange.BaseDatos.ConsultaBaseDatos;
+import Orange.BaseDatos.InsertEmployee;
 import Orange.Steps.ButtonPages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,9 +9,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import java.sql.SQLException;
+
 public class PimPage {
 
-    private ButtonPages buttonPges;
+    private ButtonPages buttonPages;
+    private ConsultaBaseDatos consultaBaseDatos;
+    private InsertEmployee insertEmployee;
 
     @FindBy(how = How.ID, using = "firstName")
     private WebElement txtName;
@@ -17,21 +23,23 @@ public class PimPage {
     @FindBy(how = How.ID, using = "lastName")
     private WebElement txtApellido;
 
-    public PimPage(WebDriver driver){
+    public PimPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.buttonPges = new ButtonPages(driver);
+        this.buttonPages = new ButtonPages(driver);
 
     }
 
-    public void llegarAddEmployee(){
-        buttonPges.btnPim();
-        buttonPges.setBtnAddEmployee();
+    public void llegarAddEmployee() {
+        buttonPages.btnPim();
+        buttonPages.btnAddEmployee();
     }
 
-    public void diligenciarEmployee(String name,String lastName){
+    public void diligenciarEmployee(String name, String lastName) throws SQLException {
         txtName.sendKeys(name);
         txtApellido.sendKeys(lastName);
-        buttonPges.btnSave();
-    }
+        buttonPages.btnSave();
+        consultaBaseDatos.consultUsers();
+        insertEmployee.insertAddEmployee(name, lastName);
 
+    }
 }

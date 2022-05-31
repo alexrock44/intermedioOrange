@@ -13,7 +13,7 @@ public class ButtonPages {
 
 
     @FindBy(how = How.ID, using = "btnLogin")
-    private WebElement btnLogin;
+    private WebElement btnLogIn;
 
     @FindBy(how = How.ID, using = "menu_pim_viewPimModule")
     private WebElement btnPim;
@@ -31,21 +31,20 @@ public class ButtonPages {
     }
 
 
-    public void btnLogin() {
-        btnLogin.isDisplayed();
-        btnLogin.click();
+    public void btnLogIn() {
+        btnLogIn.isDisplayed();
+        btnLogIn.click();
     }
 
     public void btnPim() {
         btnPim.click();
     }
 
-    public void setBtnAddEmployee() {
+    public void btnAddEmployee(){
         btnAddEmployee.click();
     }
 
     public void btnSave(){
         btnSave.click();
     }
-
 }

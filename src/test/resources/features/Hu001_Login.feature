@@ -12,12 +12,12 @@
       |Admin|admin123|
 
     @AddEmployee
-    Scenario Outline: crear un empleado
+    Scenario Outline: crear un empleado nuevo
       Given open browser
       And diligenciar user <user> y contrasena <pass>
       And llegar a la opcion agregar empleado
-      When diligencie name <name> y apellido <lastName>
+      When diligenciie name <name> y apellido <lastName>
 
       Examples:
-        |user|pass|name|lastName|
-        |Admin|admin123|alexander|sanabria|
+        | user  | pass     | name     | lastName |
+        | Admin | admin123 | alexander | sanabria   |
